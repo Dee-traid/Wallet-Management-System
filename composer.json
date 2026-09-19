@@ -1,0 +1,21 @@
+{
+    "name": "traid/wallet-management-system",
+    "description": "a web application that allows users to create accounts, manage wallets, fund wallets, and transfer money.",
+    "autoload": {
+        "psr-4": {
+            "Traid\\WalletManagementSystem\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dee-Traid",
+            "email": "adekelvin369@gmail.com"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "^0.16.12",
+        "firebase/php-jwt": "^7.1",
+        "phpmailer/phpmailer": "^7.1",
+        "vlucas/phpdotenv": "^5.7"
+    }
+}

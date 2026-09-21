@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thorfinn — Sign in</title>
+
+<link rel="icon" href="images/logo.png" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="public/css/styles.css">
+<link rel="stylesheet" href="public/css/auth.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-center">
+  <main class="form-panel">
+    <div class="form-card">
+      <a class="corner-mark corner-mark-tl" href="index.html" aria-label="Thorfinn home">
+        <svg viewBox="0 0 32 32" width="22" height="22">
+          <path d="M16 2 L16 30 M2 16 L30 16" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+          <path d="M16 4 L23 16 L16 28 L9 16 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="16" cy="16" r="2.2" fill="currentColor"/>
+        </svg>
+      </a>
+      <span class="corner-mark corner-mark-br" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="22" height="22">
+          <path d="M16 2 L16 30 M2 16 L30 16" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+          <path d="M16 4 L23 16 L16 28 L9 16 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="16" cy="16" r="2.2" fill="currentColor"/>
+        </svg>
+      </span>
+
+      <!-- LOGIN -->
+      <section class="view" id="view-login" data-view="login">
+        <h1>Welcome back</h1>
+        <p class="view-sub">Sign in to access your wallet.</p>
+
+        <form id="form-login" novalidate>
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            <p class="field-error" data-error-for="login-email"></p>
+          </div>
+
+          <div class="field">
+            <label for="login-password">Password</label>
+            <div class="input-with-action">
+              <input type="password" id="login-password" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+              <button type="button" class="input-action" data-toggle-password="login-password">Show</button>
+            </div>
+            <p class="field-error" data-error-for="login-password"></p>
+          </div>
+
+          <div class="field-row">
+            <label class="checkbox">
+              <input type="checkbox" id="login-remember" name="remember">
+              <span>Remember this device</span>
+            </label>
+            <a class="link-muted" href="#" data-nav="forgot">Forgot password?</a>
+          </div>
+
+          <p class="form-banner" id="login-banner" role="alert" hidden></p>
+
+          <button type="submit" class="btn btn-primary btn-block" id="login-submit">
+            <span class="btn-label">Sign in</span>
+          </button>
+        </form>
+
+        <p class="view-switch">Don't have a wallet? <a href="#" data-nav="signup">Create one</a></p>
+      </section>
+
+      <!-- SIGNUP -->
+      <section class="view" id="view-signup" data-view="signup" hidden>
+        <h1>Create your wallet</h1>
+        <p class="view-sub">Takes about a minute. You can link a card later.</p>
+
+        <form id="form-signup" novalidate>
+          <div class="field-pair">
+            <div class="field">
+              <label for="signup-name">Full name</label>
+              <input type="text" id="signup-name" name="name" autocomplete="name" placeholder="Your name" required>
+              <p class="field-error" data-error-for="signup-name"></p>
+            </div>
+
+            <div class="field">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+              <p class="field-error" data-error-for="signup-email"></p>
+            </div>
+          </div>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="signup-password">Password</label>
+              <div class="input-with-action">
+                <input type="password" id="signup-password" name="password" autocomplete="new-password" placeholder="Create a password" required>
+                <button type="button" class="input-action" data-toggle-password="signup-password">Show</button>
+              </div>
+              <div class="strength-meter" aria-hidden="true">
+                <span data-bar></span><span data-bar></span><span data-bar></span><span data-bar></span>
+              </div>
+              <p class="strength-label" id="signup-strength-label">Use 8+ characters with a number and a symbol</p>
+              <p class="field-error" data-error-for="signup-password"></p>
+            </div>
+
+            <div class="field">
+              <label for="signup-confirm">Confirm password</label>
+              <input type="password" id="signup-confirm" name="confirm" autocomplete="new-password" placeholder="Re-enter your password" required>
+              <p class="field-error" data-error-for="signup-confirm"></p>
+            </div>
+          </div>
+
+          <label class="checkbox checkbox-terms">
+            <input type="checkbox" id="signup-terms" name="terms" required>
+            <span>I agree to the Terms of Service and Privacy Policy</span>
+          </label>
+          <p class="field-error" data-error-for="signup-terms"></p>
+
+          <p class="form-banner" id="signup-banner" role="alert" hidden></p>
+
+          <button type="submit" class="btn btn-primary btn-block" id="signup-submit">
+            <span class="btn-label">Create wallet</span>
+          </button>
+        </form>
+
+        <p class="view-switch">Already have a wallet? <a href="#" data-nav="login">Sign in</a></p>
+      </section>
+
+      <!-- FORGOT PASSWORD -->
+      <section class="view" id="view-forgot" data-view="forgot" hidden>
+        <h1>Reset your password</h1>
+        <p class="view-sub">Enter the email on your account and we'll send a reset link.</p>
+
+        <form id="form-forgot" novalidate>
+          <div class="field">
+            <label for="forgot-email">Email</label>
+            <input type="email" id="forgot-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            <p class="field-error" data-error-for="forgot-email"></p>
+          </div>
+
+          <p class="form-banner" id="forgot-banner" role="alert" hidden></p>
+
+          <button type="submit" class="btn btn-primary btn-block" id="forgot-submit">
+            <span class="btn-label">Send reset link</span>
+          </button>
+        </form>
+
+        <p class="view-switch"><a href="#" data-nav="login">Back to sign in</a></p>
+      </section>
+
+      <!-- FORGOT: CHECK EMAIL -->
+      <section class="view" id="view-sent" data-view="sent" hidden>
+        <div class="status-icon status-icon-mail" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="40" height="40"><rect x="6" y="12" width="36" height="26" rx="4" fill="none" stroke="#6FE7D8" stroke-width="2"/><path d="M8 14 L24 27 L40 14" fill="none" stroke="#6FE7D8" stroke-width="2"/></svg>
+        </div>
+        <h1>Check your email</h1>
+        <p class="view-sub">If an account matches <strong id="sent-email-echo">that address</strong>, a reset link is on its way. It expires in 30 minutes.</p>
+        <button type="button" class="btn btn-ghost btn-block" data-nav="forgot">Use a different email</button>
+        <p class="view-switch"><a href="#" data-nav="login">Back to sign in</a></p>
+      </section>
+
+      <!-- RESET PASSWORD -->
+      <section class="view" id="view-reset" data-view="reset" hidden>
+        <h1>Choose a new password</h1>
+        <p class="view-sub">This resets access on every device that's currently signed in.</p>
+
+        <form id="form-reset" novalidate>
+          <div class="field">
+            <label for="reset-password">New password</label>
+            <div class="input-with-action">
+              <input type="password" id="reset-password" name="password" autocomplete="new-password" placeholder="Create a password" required>
+              <button type="button" class="input-action" data-toggle-password="reset-password">Show</button>
+            </div>
+            <div class="strength-meter" aria-hidden="true">
+              <span data-bar></span><span data-bar></span><span data-bar></span><span data-bar></span>
+            </div>
+            <p class="strength-label" id="reset-strength-label">Use 8+ characters with a number and a symbol</p>
+            <p class="field-error" data-error-for="reset-password"></p>
+          </div>
+
+          <div class="field">
+            <label for="reset-confirm">Confirm new password</label>
+            <input type="password" id="reset-confirm" name="confirm" autocomplete="new-password" placeholder="Re-enter your password" required>
+            <p class="field-error" data-error-for="reset-confirm"></p>
+          </div>
+
+          <p class="form-banner" id="reset-banner" role="alert" hidden></p>
+
+          <button type="submit" class="btn btn-primary btn-block" id="reset-submit">
+            <span class="btn-label">Reset password</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- SUCCESS -->
+      <section class="view" id="view-success" data-view="success" hidden>
+        <div class="status-icon status-icon-success" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="40" height="40">
+            <circle cx="24" cy="24" r="21" fill="none" stroke="#7FD9A6" stroke-width="2"/>
+            <path d="M15 24 L21 30 L33 17" fill="none" stroke="#7FD9A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-path"/>
+          </svg>
+        </div>
+        <h1 id="success-heading">You're in</h1>
+        <p class="view-sub" id="success-sub">Your wallet is ready. This is a front-end demo, so nothing was actually created — wire this up to your backend to go live.</p>
+        <button type="button" class="btn btn-primary btn-block" data-nav="login">Back to sign in</button>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="public/js/auth.js"></script>
+</body>
+</html>

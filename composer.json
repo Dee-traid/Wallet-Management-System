@@ -1,0 +1,20 @@
+{
+    "name": "traid/wallet-management-system",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dee-Traid",
+            "email": "adekelvin369@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^7.1",
+        "vlucas/phpdotenv": "^5.7",
+        "robmorgan/phinx": "*",
+        "firebase/php-jwt": "*"
+    }
+}

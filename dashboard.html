@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thorfinn — Dashboard</title>
+
+<link rel="icon" href="public/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="public/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="public/img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="public/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="public/css/styles.css">
+<link rel="stylesheet" href="public/css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+<div class="dashboard-shell" id="dashboard-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a class="logo sidebar-logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="26" height="26">
+          <path d="M16 2 L16 30 M2 16 L30 16" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+          <path d="M16 4 L23 16 L16 28 L9 16 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="16" cy="16" r="2.2" fill="currentColor"/>
+        </svg>
+      </span>
+      Thorfinn
+    </a>
+
+    <nav class="sidebar-nav">
+      <a href="#top" class="nav-item is-active" data-nav-item>
+        <svg viewBox="0 0 24 24" width="19" height="19"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item" data-open-modal="send-modal">
+        <svg viewBox="0 0 24 24" width="19" height="19"><path d="M3 11 L21 3 L13 21 L11 13 L3 11 Z" stroke-linejoin="round"/></svg>
+        Send
+      </a>
+      <a href="#" class="nav-item" data-open-modal="receive-modal">
+        <svg viewBox="0 0 24 24" width="19" height="19"><path d="M12 3 V15 M7 10 L12 15 L17 10" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19 H20" stroke-linecap="round"/></svg>
+        Receive
+      </a>
+      <a href="#cards" class="nav-item" data-nav-item>
+        <svg viewBox="0 0 24 24" width="19" height="19"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10 H22"/></svg>
+        Cards
+      </a>
+      <a href="#transactions" class="nav-item" data-nav-item>
+        <svg viewBox="0 0 24 24" width="19" height="19"><path d="M4 6 H20 M4 12 H20 M4 18 H14" stroke-linecap="round"/></svg>
+        Transactions
+      </a>
+      <a href="#" class="nav-item" data-nav-item>
+        <svg viewBox="0 0 24 24" width="19" height="19"><path d="M4 6 H20 M4 12 H20 M4 18 H20" stroke-linecap="round"/><circle cx="9" cy="6" r="2" fill="var(--bg-surface)"/><circle cx="15" cy="12" r="2" fill="var(--bg-surface)"/><circle cx="7" cy="18" r="2" fill="var(--bg-surface)"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <a class="nav-item nav-item-logout" href="index.html">
+      <svg viewBox="0 0 24 24" width="19" height="19"><path d="M15 3 H19 V21 H15" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12 H3 M7 8 L3 12 L7 16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Sign out
+    </a>
+  </aside>
+
+  <div class="dashboard-main">
+
+    <!-- TOPBAR -->
+    <header class="dash-topbar" id="top">
+      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 6 H20 M4 12 H20 M4 18 H20" stroke-linecap="round"/></svg>
+      </button>
+      <div class="topbar-heading">
+        <p class="topbar-greeting">Good afternoon, Elena</p>
+        <p class="topbar-date" id="topbar-date"></p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6Z" stroke-linejoin="round"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          <span class="icon-btn-dot" aria-hidden="true"></span>
+        </button>
+        <button class="avatar-btn" id="avatar-btn" aria-label="Account menu">
+          <span class="avatar">EC</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="dash-content">
+
+      <!-- BALANCE HERO -->
+      <section class="balance-hero">
+        <div class="balance-main">
+          <p class="balance-label">Available balance</p>
+          <p class="balance-figure">$12,480.32</p>
+          <p class="balance-change"><span class="change-up">▲ 2.4%</span> vs last month · Thorfinn Pay •••• 4471</p>
+        </div>
+        <div class="quick-actions">
+          <button class="quick-action" data-open-modal="send-modal">
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 11 L21 3 L13 21 L11 13 L3 11 Z" stroke-linejoin="round"/></svg>
+            </span>
+            Send
+          </button>
+          <button class="quick-action" data-open-modal="receive-modal">
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3 V15 M7 10 L12 15 L17 10" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19 H20" stroke-linecap="round"/></svg>
+            </span>
+            Receive
+          </button>
+          <button class="quick-action" data-open-modal="topup-modal">
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9"/><path d="M12 8 V16 M8 12 H16" stroke-linecap="round"/></svg>
+            </span>
+            Top up
+          </button>
+          <button class="quick-action" data-open-modal="request-modal">
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8 H15 M9 12 H15 M9 16 H13" stroke-linecap="round"/></svg>
+            </span>
+            Request
+          </button>
+        </div>
+      </section>
+
+      <!-- QUICK SEND -->
+      <section class="quick-send" aria-label="Quick send to contacts">
+        <div class="contact-chip contact-chip-add" data-open-modal="send-modal">
+          <span class="contact-avatar contact-avatar-add">+</span>
+          <span>Add</span>
+        </div>
+        <div class="contact-chip" data-open-modal="send-modal" data-contact="Maren K.">
+          <span class="contact-avatar" style="background:#2C3B52;">MK</span>
+          <span>Maren</span>
+        </div>
+        <div class="contact-chip" data-open-modal="send-modal" data-contact="Yusuf A.">
+          <span class="contact-avatar" style="background:#3A2A4A;">YA</span>
+          <span>Yusuf</span>
+        </div>
+        <div class="contact-chip" data-open-modal="send-modal" data-contact="Priya R.">
+          <span class="contact-avatar" style="background:#1F3B36;">PR</span>
+          <span>Priya</span>
+        </div>
+        <div class="contact-chip" data-open-modal="send-modal" data-contact="Noah B.">
+          <span class="contact-avatar" style="background:#402A2A;">NB</span>
+          <span>Noah</span>
+        </div>
+        <div class="contact-chip" data-open-modal="send-modal" data-contact="Sofia L.">
+          <span class="contact-avatar" style="background:#2A3A28;">SL</span>
+          <span>Sofia</span>
+        </div>
+      </section>
+
+      <div class="dash-grid">
+
+        <!-- LINKED CARDS -->
+        <section class="panel cards-panel" id="cards">
+          <div class="panel-head">
+            <h2>Linked cards</h2>
+            <button class="link-btn">Add card</button>
+          </div>
+          <div class="card-scroll">
+            <div class="wallet-card wallet-card-primary">
+              <p class="wallet-card-label">THORFINN CARD</p>
+              <p class="wallet-card-number">•••• •••• •••• 4471</p>
+              <div class="wallet-card-foot">
+                <span>Elena Cross</span>
+                <span>05/29</span>
+              </div>
+            </div>
+            <div class="wallet-card">
+              <p class="wallet-card-label">CHASE DEBIT</p>
+              <p class="wallet-card-number">•••• •••• •••• 9012</p>
+              <div class="wallet-card-foot">
+                <span>Elena Cross</span>
+                <span>11/27</span>
+              </div>
+            </div>
+            <div class="wallet-card">
+              <p class="wallet-card-label">AMEX PLATINUM</p>
+              <p class="wallet-card-number">•••• •••• •••• 5588</p>
+              <div class="wallet-card-foot">
+                <span>Elena Cross</span>
+                <span>02/28</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPENDING OVERVIEW -->
+        <section class="panel spending-panel">
+          <div class="panel-head">
+            <h2>Spending this month</h2>
+            <span class="panel-total">$1,842.60</span>
+          </div>
+          <div class="bar-chart">
+            <div class="bar-col"><div class="bar" style="height:78%"></div><span>Food</span></div>
+            <div class="bar-col"><div class="bar" style="height:46%"></div><span>Shopping</span></div>
+            <div class="bar-col"><div class="bar" style="height:100%"></div><span>Bills</span></div>
+            <div class="bar-col"><div class="bar" style="height:28%"></div><span>Transport</span></div>
+            <div class="bar-col"><div class="bar" style="height:15%"></div><span>Other</span></div>
+          </div>
+        </section>
+
+        <!-- TRANSACTIONS -->
+        <section class="panel transactions-panel" id="transactions">
+          <div class="panel-head">
+            <h2>Recent transactions</h2>
+            <button class="link-btn">View all</button>
+          </div>
+          <ul class="tx-list" id="tx-list">
+            <li class="tx-row">
+              <span class="tx-icon tx-icon-out">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 L17 7 M9 7 H17 V15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="tx-info">
+                <span class="tx-name">Maren K.</span>
+                <span class="tx-meta">Sent · Today, 9:41 AM</span>
+              </span>
+              <span class="tx-amount tx-amount-out">-$120.00</span>
+            </li>
+            <li class="tx-row">
+              <span class="tx-icon tx-icon-in">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M17 7 L7 17 M7 9 V17 H15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="tx-info">
+                <span class="tx-name">Payroll</span>
+                <span class="tx-meta">Received · Yesterday</span>
+              </span>
+              <span class="tx-amount tx-amount-in">+$3,200.00</span>
+            </li>
+            <li class="tx-row">
+              <span class="tx-icon tx-icon-out">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 L17 7 M9 7 H17 V15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="tx-info">
+                <span class="tx-name">Spotify</span>
+                <span class="tx-meta">Subscription · Sep 15</span>
+              </span>
+              <span class="tx-amount tx-amount-out">-$10.99</span>
+            </li>
+            <li class="tx-row">
+              <span class="tx-icon tx-icon-in">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M17 7 L7 17 M7 9 V17 H15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="tx-info">
+                <span class="tx-name">Yusuf A.</span>
+                <span class="tx-meta">Received · Sep 14</span>
+              </span>
+              <span class="tx-amount tx-amount-in">+$45.00</span>
+            </li>
+            <li class="tx-row">
+              <span class="tx-icon tx-icon-out">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 L17 7 M9 7 H17 V15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="tx-info">
+                <span class="tx-name">Amazon</span>
+                <span class="tx-meta">Shopping · Sep 12</span>
+              </span>
+              <span class="tx-amount tx-amount-out">-$68.40</span>
+            </li>
+            <li class="tx-row">
+              <span class="tx-icon tx-icon-in">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M17 7 L7 17 M7 9 V17 H15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="tx-info">
+                <span class="tx-name">Top up</span>
+                <span class="tx-meta">Added money · Sep 10</span>
+              </span>
+              <span class="tx-amount tx-amount-in">+$500.00</span>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- SEND MODAL -->
+<div class="modal-overlay" id="send-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="send-modal-title">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h2 id="send-modal-title">Send money</h2>
+    <p class="modal-sub">Money usually arrives in seconds.</p>
+    <form id="form-send" novalidate>
+      <div class="field">
+        <label for="send-to">To</label>
+        <input type="text" id="send-to" name="to" placeholder="Name, email, or phone" required>
+        <p class="field-error" data-error-for="send-to"></p>
+      </div>
+      <div class="field">
+        <label for="send-amount">Amount</label>
+        <div class="amount-input">
+          <span>$</span>
+          <input type="text" inputmode="decimal" id="send-amount" name="amount" placeholder="0.00" required>
+        </div>
+        <p class="field-error" data-error-for="send-amount"></p>
+      </div>
+      <div class="field">
+        <label for="send-note">Note (optional)</label>
+        <input type="text" id="send-note" name="note" placeholder="What's it for?">
+      </div>
+      <p class="form-banner" id="send-banner" role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="send-submit">
+        <span class="btn-label">Send</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- RECEIVE MODAL -->
+<div class="modal-overlay" id="receive-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="receive-modal-title">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h2 id="receive-modal-title">Receive money</h2>
+    <p class="modal-sub">Share your Thorfinn ID so anyone can pay you.</p>
+    <div class="receive-id">
+      <span id="receive-id-value">elena.cross@thorfinn.pay</span>
+      <button class="link-btn" id="copy-id-btn" type="button">Copy</button>
+    </div>
+    <div class="receive-qr" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="140" height="140">
+        <rect width="120" height="120" rx="10" fill="#1B2333"/>
+        <g fill="#6FE7D8">
+          <rect x="14" y="14" width="26" height="26" rx="3"/>
+          <rect x="80" y="14" width="26" height="26" rx="3"/>
+          <rect x="14" y="80" width="26" height="26" rx="3"/>
+          <rect x="21" y="21" width="12" height="12" rx="1.5" fill="#1B2333"/>
+          <rect x="87" y="21" width="12" height="12" rx="1.5" fill="#1B2333"/>
+          <rect x="21" y="87" width="12" height="12" rx="1.5" fill="#1B2333"/>
+          <rect x="50" y="14" width="8" height="8"/>
+          <rect x="64" y="28" width="8" height="8"/>
+          <rect x="50" y="50" width="20" height="20"/>
+          <rect x="80" y="56" width="8" height="8"/>
+          <rect x="94" y="70" width="8" height="8"/>
+          <rect x="50" y="80" width="8" height="8"/>
+          <rect x="64" y="94" width="8" height="8"/>
+          <rect x="80" y="94" width="26" height="8"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- TOP UP MODAL -->
+<div class="modal-overlay" id="topup-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="topup-modal-title">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h2 id="topup-modal-title">Top up balance</h2>
+    <p class="modal-sub">Add money from a linked card or bank account.</p>
+    <form id="form-topup" novalidate>
+      <div class="field">
+        <label for="topup-source">From</label>
+        <select id="topup-source" name="source">
+          <option>Thorfinn Card •••• 4471</option>
+          <option>Chase Debit •••• 9012</option>
+          <option>Amex Platinum •••• 5588</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="topup-amount">Amount</label>
+        <div class="amount-input">
+          <span>$</span>
+          <input type="text" inputmode="decimal" id="topup-amount" name="amount" placeholder="0.00" required>
+        </div>
+        <p class="field-error" data-error-for="topup-amount"></p>
+      </div>
+      <p class="form-banner" id="topup-banner" role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="topup-submit">
+        <span class="btn-label">Add money</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- REQUEST MODAL -->
+<div class="modal-overlay" id="request-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="request-modal-title">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h2 id="request-modal-title">Request money</h2>
+    <p class="modal-sub">Send a request to get paid back.</p>
+    <form id="form-request" novalidate>
+      <div class="field">
+        <label for="request-from">From</label>
+        <input type="text" id="request-from" name="from" placeholder="Name, email, or phone" required>
+        <p class="field-error" data-error-for="request-from"></p>
+      </div>
+      <div class="field">
+        <label for="request-amount">Amount</label>
+        <div class="amount-input">
+          <span>$</span>
+          <input type="text" inputmode="decimal" id="request-amount" name="amount" placeholder="0.00" required>
+        </div>
+        <p class="field-error" data-error-for="request-amount"></p>
+      </div>
+      <p class="form-banner" id="request-banner" role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="request-submit">
+        <span class="btn-label">Send request</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src="public/js/dashboard.js"></script>
+</body>
+</html>

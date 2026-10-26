@@ -183,6 +183,26 @@ input:focus {
 .strength-meter.s3 span:nth-child(3) { background: var(--ice); border-color: var(--ice); }
 .strength-meter.s4 span { background: var(--success); border-color: var(--success); }
 
+/* PIN field */
+.field-pair-pin { margin-top: -2px; }
+
+.pin-input {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.5em;
+  text-align: center;
+}
+.pin-input::placeholder { letter-spacing: 0.5em; }
+
+.pin-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.field.field-valid .pin-input { border-color: var(--success); }
+.field.field-invalid .pin-input { border-color: var(--danger); }
+
 .form-banner {
   font-size: 0.86rem;
   padding: 11px 14px;

@@ -1,37 +1,28 @@
 <?php
-
-namespace Config;
+namespace src\Config;
 
 use PDO;
 use PDOException;
+use RuntimeException;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
 
 class Database{
-    private static $pdo = null;
+    private static ?PDO $pdo = null;
 
-    public function dbConnection($pdo){
+    public static function getDatabaseConnection(){
         if(self::$pdo !== null){
             return self::$pdo;
-        }     
-        $database = $_ENV[DB_NAME];
-        $dsn = 'sqlite:' . $database;
+        }
 
+        $database = dirname(__DIR__, 2) . '/' .$_ENV['DB_PATH'];
+        $dsn = "sqlite:$database";
         try{
             self::$pdo = new PDO($dsn);
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
+
             return self::$pdo;
-
         }catch(PDOException $e){
-            http_response_code(500);
-            header('Content_Type: application/json');
-
-            die(json_encode([
-                'status' => 'error',
-                'message' => 'Database connection failed'
-            ]));
+            throw new RuntimeException('Database connection failed.', 500, $e);
         }
-   }
+    }
 }

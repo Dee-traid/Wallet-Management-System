@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <meta name="csrf-token" content="<?php echo $_SESSION['csrf-token']";?> -->
 <title>Thorfinn — Sign in</title>
 
 <link rel="icon" href="images/logo.png" sizes="any">
@@ -41,7 +42,7 @@
         <h1>Welcome back</h1>
         <p class="view-sub">Sign in to access your wallet.</p>
 
-        <form id="form-login" novalidate>
+        <form id="form-login" novalidate method="POST">
           <div class="field">
             <label for="login-email">Email</label>
             <input type="email" id="login-email" name="email" autocomplete="email" placeholder="you@example.com" required>
@@ -51,7 +52,7 @@
           <div class="field">
             <label for="login-password">Password</label>
             <div class="input-with-action">
-              <input type="password" id="login-password" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+              <input type="password" id="login-password" name="password_hash" autocomplete="current-password" placeholder="Enter your password" required>
               <button type="button" class="input-action" data-toggle-password="login-password">Show</button>
             </div>
             <p class="field-error" data-error-for="login-password"></p>
@@ -78,23 +79,23 @@
       <!-- SIGNUP -->
       <section class="view" id="view-signup" data-view="signup" hidden>
         <h1>Create your wallet</h1>
-        <p class="view-sub">Takes about a minute. You can link a card later.</p>
-
-        <form id="form-signup" novalidate>
+        <p class="view-sub">Enjoy seamless transaction with Thorfinn.</p>
+ 
+        <form id="form-signup" novalidate method="POST">
           <div class="field-pair">
             <div class="field">
               <label for="signup-name">Full name</label>
-              <input type="text" id="signup-name" name="name" autocomplete="name" placeholder="Your name" required>
+              <input type="text" id="signup-name" name="full_name" autocomplete="name" placeholder="Your name" required>
               <p class="field-error" data-error-for="signup-name"></p>
             </div>
-
+ 
             <div class="field">
               <label for="signup-email">Email</label>
               <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="you@example.com" required>
               <p class="field-error" data-error-for="signup-email"></p>
             </div>
           </div>
-
+ 
           <div class="field-pair">
             <div class="field">
               <label for="signup-password">Password</label>
@@ -108,30 +109,51 @@
               <p class="strength-label" id="signup-strength-label">Use 8+ characters with a number and a symbol</p>
               <p class="field-error" data-error-for="signup-password"></p>
             </div>
-
+ 
             <div class="field">
               <label for="signup-confirm">Confirm password</label>
-              <input type="password" id="signup-confirm" name="confirm" autocomplete="new-password" placeholder="Re-enter your password" required>
+              <input type="password" id="signup-confirm" name="confirm_password" autocomplete="new-password" placeholder="Re-enter your password" required>
               <p class="field-error" data-error-for="signup-confirm"></p>
             </div>
           </div>
-
+ 
+          <div class="field-pair field-pair-pin">
+            <div class="field">
+              <label for="signup-pin">Wallet transfer PIN</label>
+              <div class="input-with-action">
+                <input type="password" id="signup-pin" name="wallet_transaction_pin_hash" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" placeholder="••••••" class="pin-input" required>
+                <button type="button" class="input-action" data-toggle-password="signup-pin">Show</button>
+              </div>
+              <p class="pin-hint" id="signup-pin-hint">6 digits, numbers only. You'll use this to confirm transfers.</p>
+              <p class="field-error" data-error-for="signup-pin"></p>
+            </div>
+ 
+            <div class="field">
+              <label for="signup-pin-confirm">Confirm PIN</label>
+              <div class="input-with-action">
+                <input type="password" id="signup-pin-confirm" name="confirm_pin" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" placeholder="••••••" class="pin-input" required>
+                <button type="button" class="input-action" data-toggle-password="signup-pin-confirm">Show</button>
+              </div>
+              <p class="field-error" data-error-for="signup-pin-confirm"></p>
+            </div>
+          </div>
+ 
           <label class="checkbox checkbox-terms">
             <input type="checkbox" id="signup-terms" name="terms" required>
             <span>I agree to the Terms of Service and Privacy Policy</span>
           </label>
           <p class="field-error" data-error-for="signup-terms"></p>
-
+ 
           <p class="form-banner" id="signup-banner" role="alert" hidden></p>
-
+ 
           <button type="submit" class="btn btn-primary btn-block" id="signup-submit">
             <span class="btn-label">Create wallet</span>
           </button>
         </form>
-
+ 
         <p class="view-switch">Already have a wallet? <a href="#" data-nav="login">Sign in</a></p>
       </section>
-
+      
       <!-- FORGOT PASSWORD -->
       <section class="view" id="view-forgot" data-view="forgot" hidden>
         <h1>Reset your password</h1>

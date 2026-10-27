@@ -1,8 +1,18 @@
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use src\Utility\CSRF;
+$csrfToken = CSRF::generateCsrfToken();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf_token"  content="<?= htmlspecialchars($csrfToken, ENT_QUOTES) ?>">
 <title>Thorfinn — Your money</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
